@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mars Data</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+    </div>
+    
+    <h2 style="padding-left: 30px;">Latest Mars News</h2>
+    <h3 style="padding-left: 30px;">{{ mars.news_title }}.</h3>
+    <h4 style="padding-left: 30px;">{{ mars.news_p }}</h4>
+    
+  </div>
+
+
+  </div>
+
+
+
+    <div class="row" style="padding-left: 40px;  padding-right: 40px;">
+    
+      <div class="col-md-8">
+
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title">Featured Mars Image</h2>
+
+              <figure>
+                  <a>
+                      <img src="{{ mars.featured_image_url }}" class="img-responsive" alt="Mars">
+                  </a>    
+              </figure>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4"> 
+          <div class="card">
+              <div class="card-body">
+                <h2 class="card-title">Mars Data</h2>
+
+                <table border="1" class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Parameter</th>
+                      <th>Values</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                      {% for fact in mars.table %}
+                    <tr>
+                      <td>{{ fact.Parameter }}</td>
+                      <td>{{ fact.Values }}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+
+                </table>
+
+              </div>
+       
+            </div>
+        </div>
+        
+    </div>
+    <h3></h3>
+    <h3></h3>
+    <div class="row" style="padding-left: 40px;  padding-right: 40px;"> 
+      <div class="card">
+          <div class="card-body">
+            <h1 class="text-center">Mars Hemispheres</h1>
+<hr>
+              
+            {% for hem in mars.hemisphere_image_urls %}
+              <div class="col-md-6 col-sm-12"><h3 class="figure-title">{{ hem.title }}</h3><a><img src="{{ hem.img_url }}" class="img-responsive" alt="hems"></a></div>
+            {% endfor %}
+
+                
+            
+          </div>
+   
+        </div>
+    </div>
+
+
+</body>
+
+</html>
